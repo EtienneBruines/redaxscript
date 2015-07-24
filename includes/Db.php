@@ -72,7 +72,14 @@ class Db extends ORM
 		{
 			if ($dbType === 'mysql')
 			{
-				self::configure('connection_string', 'mysql:host=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
+				if (strlen($dbHost) > 0 && $dbHost[0] == '/')
+				{
+					self::configure('connection_string', 'mysql:unix_socket=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
+				}
+				else
+				{
+					self::configure('connection_string', 'mysql:host=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
+				}
 			}
 			else
 			{

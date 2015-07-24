@@ -144,7 +144,7 @@ class ServerTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals('http://localhost/tests/includes/Server', $actual);
+		$this->assertEquals('//localhost/tests/includes/Server', $actual);
 	}
 
 	/**

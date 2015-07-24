@@ -23,13 +23,12 @@ class Root extends ServerAbstract
 
 	public function getOutput()
 	{
-		$protocol = new Protocol($this->_request);
 		$host = new Host($this->_request);
 		$directory = new Directory($this->_request);
 
 		/* collect output */
 
-		$output = $protocol->getOutput() . '://' . $host->getOutput();
+		$output = '//' . $host->getOutput();
 		if ($directory->getOutput() !== '/' && $directory->getOutput() !== '\\')
 		{
 			$output .= $directory->getOutput();
